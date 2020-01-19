@@ -1,5 +1,7 @@
 <?
- 
+
+$connection = new PDO('mysql:host = localhost , dbname=email; charset=utf8', 'rafael', 'vfvtljd');
+
 function generateRandomString () {
     $char = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
     $random = '';

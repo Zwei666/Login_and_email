@@ -11,9 +11,11 @@
       <user-name>rafael</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" qname="@" />
-          <node kind="schema" qname="comments" />
-          <node kind="schema" qname="email" />
+          <node kind="schema">
+            <name qname="@" />
+            <name qname="comments" />
+            <name qname="email" />
+          </node>
         </introspection-scope>
       </schema-mapping>
     </data-source>

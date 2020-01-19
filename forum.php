@@ -6,10 +6,13 @@ $data = $connection->query("SELECT * FROM comments.comments WHERE moderation='ok
 if ($_POST['username']) {
     $username = htmlspecialchars($_POST['username']);
     $text = htmlspecialchars($_POST ['text']);
-            $data = date("Y-m-d H:i:s");
-    $connection->query("INSERT INTO comments.comments (username,comment,data) VALUE ('$username','$text','$data') ");
+            $time = date("Y-m-d H:i:s");
+   $safe = $connection->prepare("INSERT INTO comments.comments SET username=:username, data='$time', comment=:text ");
+    $arr = ['username' => $username, 'text' => $text];
+    $safe -> execute($arr);
     header('Location:forum.php');
 }
+
 
 
 
