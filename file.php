@@ -38,13 +38,18 @@ $data = $connection->query("SELECT * FROM comments.images");
 echo "<div style='display: flex;align-items: flex-end;flex-wrap: wrap'>";
 foreach ($data as $img) {
 
+
     $delete = "delete" . $img['id'];
+    $image = "uploads/".$img['id'] . $img['imgname'] . '.' . $img['extension'];
+
     if (isset($_POST[$delete])) {
         $imageID = $img['id'];
         $connection->query("DELETE FROM comments.images WHERE id='$imageID'");
+        if (file_exists($image)) {
+            unlink($image);
+        }
     }
 
-    $image = "uploads/".$img['id'] . $img['imgname'] . '.' . $img['extension'];
 if (file_exists($image)) {
     echo "<div>";
     echo "<img width='150' height='150' src='$image'>";
